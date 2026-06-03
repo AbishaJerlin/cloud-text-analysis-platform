@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Model checkpoints and saved adapters
+distilbert_sentiment*/
+distilbert_sarcasm*/
+task4_model/
+llama_lora*/
+lora_adapter*/
+best_lora_adapter*/
+*.bin
+*.safetensors
+*.pt
+
+# Environment variables
+.env
+
+# Hugging Face cache
+~/.cache/huggingface/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+wandb/
+runs/

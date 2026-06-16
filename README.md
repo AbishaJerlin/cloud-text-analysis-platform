@@ -21,6 +21,13 @@ The project goes through several stages:
 
 ---
 
+## Demo
+
+### Project Demo Video
+https://github.com/AbishaJerlin/cloud-text-analysis-platform/blob/main/Project_demo.mp4
+
+---
+
 ## Tech Stack
 
 | Component | Tool |

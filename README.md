@@ -1,6 +1,6 @@
 # Cloud Text Analysis Platform
 
-This is my project for multi-variety English NLP — specifically sentiment analysis and sarcasm detection across British, Australian, and Indian English. The models are containerised with Docker and the Gradio demo can be deployed on GCP Cloud Run.
+This project explores NLP across multiple varieties of English, specifically sentiment analysis and sarcasm detection across British, Australian, and Indian English. The project includes a Gradio interface, Docker containerisation, and configuration for deployment to GCP Cloud Run.
 
 ---
 
@@ -26,10 +26,11 @@ The project goes through several stages:
 ```
 cloud-text-analysis-platform/
 │
-├── main.ipynb          # Full research notebook — EDA, training, experiments
+├── main.ipynb          # Full research notebook - EDA, training, experiments
 ├── app.py              # Gradio deployment entry point (loaded by Docker)
 ├── requirements.txt    # Python dependencies
 ├── Dockerfile          # Container definition
+├── LICENSE             # MIT License
 ├── .gitignore          # Excludes model checkpoints and large files
 └── README.md           # This file
 ```
@@ -165,17 +166,17 @@ Make sure you have the [Google Cloud CLI](https://cloud.google.com/sdk/docs/inst
 
 ```bash
 # Set your project
-gcloud config set project abisha-jerlin
+gcloud config set project YOUR_PROJECT_ID
 
 # Enable required services
 gcloud services enable run.googleapis.com containerregistry.googleapis.com
 
 # Build and push the image
-gcloud builds submit --tag gcr.io/abisha-jerlin/text-analysis-platform
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/text-analysis-platform
 
 # Deploy
 gcloud run deploy text-analysis-platform \
-  --image gcr.io/abisha-jerlin/text-analysis-platform \
+  --image gcr.io/YOUR_PROJECT_ID/text-analysis-platform \
   --platform managed \
   --region europe-west2 \
   --allow-unauthenticated \
@@ -205,9 +206,15 @@ It contains text samples labelled for:
 
 ## Notes
 
-- The LoRA training requires a GPU (trained on Google Colab with an A100).
+- The LoRA training requires a GPU and was run using Google Colab.
 - 4-bit quantisation (`bitsandbytes`) is used to reduce memory requirements for Llama 3.2 1B.
 - The classical ML and DistilBERT sections can run on CPU, just slower.
 - `main.ipynb` contains the full research pipeline from EDA through to deployment.
 - `app.py` is the standalone Gradio entry point used by Docker — it loads the saved LoRA adapters and serves the web interface without re-running any training.
 - A Hugging Face access token (`HF_TOKEN`) is required to download Llama 3.2 1B from the Hub.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
